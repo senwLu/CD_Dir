@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery Functions</title>
+    <style>
+        .highlight {
+            background: yellow;
+        }
+    </style>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#click").click(function() {
+                alert("You have clicked a button!");
+            })
+            $('#hide').click(function() {
+                $('#hide').hide();
+            })
+            $('#show').click(function() {
+                $('#hide').show();
+            })
+            $('#toggle').click(function() {
+                $('#t1').toggle();
+            })
+            $('#slideUp').click(function() {
+                $('#t2').slideUp();
+            })
+            $('#slideDown').click(function() {
+                $('#t2').slideDown();
+            })
+            $('#slideToggle').click(function() {
+                $('#t2').slideToggle();
+            })
+            $('#fadeIn').click(function() {
+                $('#t3').fadeIn();
+            })
+            $('#fadeOut').click(function() {
+                $('#t3').fadeOut();
+            })
+            $('#addClass').click(function() {
+                $('#leg1').addClass('highlight');
+            })
+            $('#before').click(function() {
+                $('#ba').before('<p>I need cheese</p>');
+            })
+            $('#after').click(function() {
+                $('#ba').after('<p>Go get cheese</p>');
+            })
+            $('#append').click(function() {
+                $('#ba').append('<strong>NOOOOO</strong>');
+            })
+            $('#htmlp').click(function() {
+                var a = $(this).html();
+                $(this).text(a);
+            })
+            
+            var emID = $('em').attr('id');
+            $('#emDiv').text(emID);
+            
+            function chngVals() {
+                var valSingle = $('#single').val();
+                $('#valDiv').html(valSingle);                
+            }
+            $('select').change(chngVals);
+            chngVals();
+
+            $('ul li').text(function(index) {
+                return 'item number ' + (index+1);
+            })
+
+        });
+    </script> 
+</head>
+<body>
+    <fieldset>
+        <legend>Click</legend>
+        <button id='click'>Click Me</button>
+    </fieldset>
+    <fieldset id='t1'>
+        <legend>Hide/Show</legend>
+        <button id='hide'>Click Me to hide</button>
+        <button id='show'>Click Me to show</button>
+    </fieldset>
+    <fieldset id='t2'>
+        <legend>Toggle</legend>
+        <button id='toggle'>Toggle me</button>
+    </fieldset>
+    <fieldset id='t3'>
+            <legend>SlideUp/SlideDown/SlideToggle</legend>
+            <button id='slideUp'>SlideUp</button>
+            <button id='slideDown'>SlideUp</button>
+            <button id='slideToggle'>SlideToggle</button>
+    </fieldset>
+    <fieldset>
+            <legend>FadeIn/FadeOut</legend>
+            <button id='fadeIn'>Fade In</button>
+            <button id='fadeOut'>Fade Out</button>
+    </fieldset>
+    <fieldset>
+        <legend id='leg1'>AddClass</legend>
+        <button id='addClass'>AddClass</button>
+    </fieldset>
+    <fieldset>
+            <legend>Before/After/Append</legend>
+            <p id='ba'>There is no cheese</p>
+            <button id='before'>Before button</button>
+            <button id='after'>After Button</button>
+            <button id='append'>Append Button</button>
+    </fieldset>    
+    <fieldset>
+            <legend>HTML</legend>
+            <p id='htmlp'>This <button>button</button></p>
+    </fieldset>
+    <fieldset>
+        <legend>Attr</legend>
+        <p>There is <em id='131'>no</em> cheese</p>
+        <div id='emDiv'></div>
+    </fieldset>
+    <fieldset>
+        <legend>Val</legend>
+        <select id="single">
+            <option>Single</option>
+            <option>Single2</option>
+            <option>Single3</option>
+        </select>
+        <div id='valDiv'></div>
+    </fieldset>
+    <fieldset>
+        <legend>Text</legend>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </fieldset>
+</body>
+
+</html>
