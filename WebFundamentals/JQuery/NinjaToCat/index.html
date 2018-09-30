@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery Functions</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        img {
+            margin-right: 90%;
+        }
+    </style>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        function randPicker() {
+            var num = Math.floor(Math.random()*(4+1));
+            var pic = Math.floor(Math.random()*(1+1))
+            if(pic === 1) {
+                return "img/cat"+num+".png";
+            }else {
+                return "img/ninja"+num+".png";
+            }
+        }
+
+        $(document).ready(function() {
+      
+            $('img').click(function() {
+                var pickA = randPicker();
+
+                while(pickA === $(this).attr('src')) {
+                    pickA = randPicker();
+                }
+
+                 $(this).attr('src', pickA);
+            })
+        });
+    </script> 
+</head>
+<body>
+
+</body>
+    <img src="img/cat0.png" alt="">
+    <img src="img/ninja4.png" alt="img/cat1.png">
+    <img src="img/cat3.png" alt="">
+    <img src="img/ninja1.png" alt="img/cat2.png">
+
+</html>
