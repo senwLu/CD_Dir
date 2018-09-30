@@ -42,9 +42,11 @@
 			
 			document.getElementById('svg').appendChild(circle);
 		}
-
+		
 		this.update = function(time){
 			var el = document.getElementById(html_id);
+		
+			
 
 			//see if the circle is going outside the browser. if it is, reverse the velocity
 			if( this.info.cx + a > document.body.clientWidth * 0.985 || this.info.cx - a < 0)
@@ -54,10 +56,25 @@
 			}
 			if( this.info.cy + a > document.body.clientHeight * 0.948 || this.info.cy - a < 0)
 			{
-				console.log(document.body.clientWidth);
 				// this.info.velocity.y = this.info.velocity.y * -1;
 				this.info.velocity.y *= -1;
 			}
+
+			// var cir = document.getElementsByTagName('circle');
+
+
+			// for(var count=0; count > cir.length; count++) {
+			// 	console.log(count);
+			// 	if(count != el.getAttribute('id')) {
+			// 		if(el.getAttribute('cx') === cir[count].getAttribute('cx') && el.getAttribute('cy') === cir[count].getAttribute('cy') )  {
+			// 			this.info.velocity.x *= -1;
+			// 			this.info.velocity.y *= -1;
+			// 			console.log('hit');
+			// 		} 					
+			// 	}
+			// }
+			
+
 
 			this.info.cx = this.info.cx + this.info.velocity.x*time;
 			this.info.cy = this.info.cy + this.info.velocity.y*time;
