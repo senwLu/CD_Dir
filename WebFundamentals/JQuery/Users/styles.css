@@ -4,26 +4,26 @@
 }
 
 table {
-    border: solid 2px black;
-  }
+  border: solid 2px black;
+}
   
-  th {
-    padding-right: 40px;
-  }
+th {
+  padding-right: 40px;
+}
   
-  form h1 {
-    border-bottom: solid 1px grey;
-  }
+form h1 {
+  border-bottom: solid 1px grey;
+}
   
-  #formBox {
-    width: 300px;
-  }
+#formBox {
+  width: 300px;
+}
   
-  .alignRight {
-    display: block;
-    text-align: right;
-  }
+.alignRight {
+  display: block;
+  text-align: right;
+}
   
-  .fRight {
-    float: right;
-  }
+.fRight {
+  float: right;
+}

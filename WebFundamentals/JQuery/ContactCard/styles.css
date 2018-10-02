@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    padding-top: 20px;
+}
+
+label{
+    width: 50%;
+}
+    label input {
+        width: 100px;
+    }
+
+#formBox {
+    width: 50%;
+    left: 20px;
+    position: fixed;
+}
+  
+.alignRight {
+    display: block;
+}
+
+#displaySide {
+    width: 50%;
+    right: 0;
+    position: fixed;
+}
+
+.cardBox {
+    border: 1px solid black;
+    width: 95%;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+}
+
+    .cardBox p {
+        margin-top: 10px;
+    }
+
+.hideIt {
+    display: none; 
+}

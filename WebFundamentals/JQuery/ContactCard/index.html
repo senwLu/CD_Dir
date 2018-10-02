@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="jQuery.js"></script>
+</head>
+<body>
+    <div id="formBox">
+        <form id="addForm" name="userForm" method="post">
+            <label class="alignRight">
+                First Name: <input name="Fname" type="text" value="First Name">
+            </label>
+            <label class="alignRight">
+                Last Name: <input name="Lname" type="text" value="Last Name">
+            </label>
+            <p>Description:</p>
+            <textarea name="userDes" id="userDes" cols="30" rows="10"></textarea>
+            <br>
+            <input type="submit" value="Add User">
+        </form>
+    </div>
+    <div id='displaySide'>
+        <div class='cardBox'>
+            <h1>Michael Choi</h1>
+            <p class='hideIt'>Codingdojo's leader. Master of instruction.</p>
+            <p>Click for description</p>
+        </div>
+    </div>
+    </body>
+</html>
