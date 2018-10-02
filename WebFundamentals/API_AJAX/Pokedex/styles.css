@@ -1,0 +1,20 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    margin: 0px auto;
+    padding: 5px;
+}
+.leftDiv {
+    width: 60%;
+    float: left;
+}
+.rightDiv {
+    width: 30%;
+    border: 5px solid black;
+    height: 400px;
+    float: right;
+}
