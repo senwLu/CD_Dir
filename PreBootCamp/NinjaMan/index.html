@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NinjaMan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .row {
+            line-height: 0;
+        }
+
+        .wall {
+            background-color: blue;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+        }
+
+        .sushi {
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url('img/sushi.png');
+            background-size: contain;
+        }
+
+        .onigiri {
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url('img/onigiri.png');
+            background-size: contain;
+        }
+
+        .blank {
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+        }
+
+        #ninjaMan {
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url('img/ninja.gif');
+            background-size: contain;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='world'></div>
+    <div id='ninjaMan'></div>
+</body>
+<script type="text/javascript">
+    var world = [
+        [0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0],
+        [0, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0],
+        [0, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0],
+        [0, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0],
+        [0, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0],
+        [0, 1, 1, 1, 0],
+        [0, 1, 0, 1, 0],
+        [0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0]
+    ];
+
+    // var worldDict = {
+    //     0: 'wall',
+    //     1: 'blank',
+    //     2: 'sushi',
+    //     3: 'onigiri'
+    // }
+
+    var ninjaMan = {
+        x: 1,
+        y: 1
+    }
+
+    // function randomize() {
+    //     return Math.floor(Math.random() * 3) + 1;
+    // }
+
+    // function drawWorld() {
+    //     output = "";
+
+    //     // parse through world array
+    //     for (var row = 0; row < world.length; row++) {
+    //         output += "<div class='row'>";
+    //         for (var x = 0; x < world[row].length; x++) {
+    //             if (world[row][x] !== 0) {
+    //                 world[row][x] = randomize();
+    //             }
+    //             output += "<div class='" + worldDict[world[row][x]] + "'></div>";
+
+    //         }
+    //         output += "</div>";
+    //     }
+
+    //     document.getElementById('world').innerHTML = output;
+    // }
+
+    function displayNinja() {
+        document.getElementById('ninjaMan').style.top = ninjaMan.x * 40 + "px";
+        document.getElementById('ninjaMan').style.left = ninjaMan.y * 40 + "px";
+    }
+
+    displayNinja();
+
+    // NinjaMan movement
+    document.onkeydown = function (e) {
+        if (e.keyCode == 37) {
+            // Left
+            ninjaMan.y--;
+
+        }
+        else if (e.keyCode == 39) {
+            // Right
+            ninjaMan.y++;
+
+        }
+        else if (e.keyCode == 38) {
+            // Top
+            ninjaMan.x--;
+
+        }
+        else if (e.keyCode == 40) {
+            // Bottom
+            ninjaMan.x++;
+        }
+    }
+
+    // drawWorld();
+    displayNinja();
+
+</script>
+
+</html>
