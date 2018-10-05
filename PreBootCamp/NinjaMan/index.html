@@ -80,40 +80,46 @@
         [0, 0, 0, 0, 0]
     ];
 
-    // var worldDict = {
-    //     0: 'wall',
-    //     1: 'blank',
-    //     2: 'sushi',
-    //     3: 'onigiri'
-    // }
+    var worldDict = {
+        0: 'wall',
+        1: 'blank',
+        2: 'sushi',
+        3: 'onigiri'
+    }
 
     var ninjaMan = {
         x: 1,
         y: 1
     }
 
-    // function randomize() {
-    //     return Math.floor(Math.random() * 3) + 1;
-    // }
+    var score = 0;
 
-    // function drawWorld() {
-    //     output = "";
+    function randomize() {
+        return Math.floor(Math.random() * 3) + 1;
+    }
 
-    //     // parse through world array
-    //     for (var row = 0; row < world.length; row++) {
-    //         output += "<div class='row'>";
-    //         for (var x = 0; x < world[row].length; x++) {
-    //             if (world[row][x] !== 0) {
-    //                 world[row][x] = randomize();
-    //             }
-    //             output += "<div class='" + worldDict[world[row][x]] + "'></div>";
+    function drawWorld() {
+        output = "";
 
-    //         }
-    //         output += "</div>";
-    //     }
+        // parse through world array
+        for (var row = 0; row < world.length; row++) {
+            output += "<div class='row'>";
+            for (var x = 0; x < world[row].length; x++) {
+                if (world[row][x] !== 0) {
+                    world[row][x] = randomize();
+                }
+                output += "<div class='" + worldDict[world[row][x]] + "'></div>";
 
-    //     document.getElementById('world').innerHTML = output;
-    // }
+            }
+            output += "</div>";
+        }
+
+        document.getElementById('world').innerHTML = output;
+    }
+
+    function keepScore() {
+
+    }
 
     function displayNinja() {
         document.getElementById('ninjaMan').style.top = ninjaMan.x * 40 + "px";
@@ -124,29 +130,32 @@
 
     // NinjaMan movement
     document.onkeydown = function (e) {
-        if (e.keyCode == 37) {
+
+        // check direction of arrow key
+        // if movement to space is not a wall in the world, move to it
+        if (e.keyCode == 37 && world[ninjaMan.x][ninjaMan.y - 1] !== 0) {
             // Left
             ninjaMan.y--;
 
         }
-        else if (e.keyCode == 39) {
+        else if (e.keyCode == 39 && world[ninjaMan.x][ninjaMan.y + 1]) {
             // Right
             ninjaMan.y++;
 
         }
-        else if (e.keyCode == 38) {
+        else if (e.keyCode == 38 && world[ninjaMan.x - 1][ninjaMan.y]) {
             // Top
             ninjaMan.x--;
 
         }
-        else if (e.keyCode == 40) {
+        else if (e.keyCode == 40 && world[ninjaMan.x + 1][ninjaMan.y]) {
             // Bottom
             ninjaMan.x++;
         }
+        displayNinja();
     }
 
-    // drawWorld();
-    displayNinja();
+    drawWorld();
 
 </script>
 
