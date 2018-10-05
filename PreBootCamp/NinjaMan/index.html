@@ -59,6 +59,9 @@
 
 <body>
     <div id='world'></div>
+    <div id='score'>
+        <p>Score: 0</p>
+    </div>
     <div id='ninjaMan'></div>
 </body>
 <script type="text/javascript">
@@ -94,31 +97,53 @@
 
     var score = 0;
 
-    function randomize() {
-        return Math.floor(Math.random() * 3) + 1;
+    // randomize world
+    function randWorld() {
+        for (var x = 0; x < world.length; x++) {
+            for (var i = 0; i < world[x].length; i++) {
+                if (world[x][i] === 1) {
+                    world[x][i] = Math.floor(Math.random() * 3) + 1;
+                }
+            }
+        }
     }
 
-    function drawWorld() {
-        output = "";
+    randWorld();
 
-        // parse through world array
-        for (var row = 0; row < world.length; row++) {
+    // display the world
+    function displayWorld() {
+        var output = '';
+        for (var i = 0; i < world.length; i++) {
             output += "<div class='row'>";
-            for (var x = 0; x < world[row].length; x++) {
-                if (world[row][x] !== 0) {
-                    world[row][x] = randomize();
+            for (var j = 0; j < world[i].length; j++) {
+                if (world[i][j] == 0) {
+                    output += "<div class='wall'></div>";
+                } else if (world[i][j] == 1) {
+                    output += "<div class='blank'></div>";
+                } else if (world[i][j] == 2) {
+                    output += "<div class='sushi'></div>";
+                } else if (world[i][j] == 3) {
+                    output += "<div class='onigiri'></div>";
                 }
-                output += "<div class='" + worldDict[world[row][x]] + "'></div>";
-
             }
             output += "</div>";
         }
-
         document.getElementById('world').innerHTML = output;
     }
 
     function keepScore() {
+        if (world[ninjaMan.x][ninjaMan.y] === 2) {
+            score += 5;
+        }
+        if (world[ninjaMan.x][ninjaMan.y] === 3) {
+            score += 10;
+        }
+        // after ninjaMan eats the 'points' these items disappear
+        world[ninjaMan.x][ninjaMan.y] = 1;
 
+        document.getElementById('score').innerHTML = `<p>Score: ${score}</p>`
+
+        displayWorld();
     }
 
     function displayNinja() {
@@ -153,9 +178,10 @@
             ninjaMan.x++;
         }
         displayNinja();
+        keepScore();
     }
 
-    drawWorld();
+    displayWorld();
 
 </script>
 
