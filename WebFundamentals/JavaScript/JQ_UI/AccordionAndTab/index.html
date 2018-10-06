@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Accordion &amp; Tab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+    <script text="text/javascript">
+        $(document).ready(function () {
+            $('#tabs').tabs();
+
+            $('#accordion').accordion({
+                // have all panels collapsed, active => false & collapsible => true
+                active: false,
+                collapsible: true
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <div id='tabs'>
+        <ul>
+            <li><a href="#tab1">Tab1</a></li>
+            <li><a href="#tab2">Tab2</a></li>
+            <li><a href="#tab3">Tab3</a></li>
+        </ul>
+        <div id='tab1'>Content for tab1</div>
+        <div id='tab2'>Content for tab2</div>
+        <div id='tab3'>Content for tab3</div>
+    </div>
+    <div id='accordion'>
+        <h3>First Header</h3>
+        <div>First content panel</div>
+        <h3>Second Header</h3>
+        <div>Second content panel</div>
+        <h3>Third Header</h3>
+        <div>Third content panel</div>
+    </div>
+</body>
+
+</html>

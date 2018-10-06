@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Date Validations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+    <script text="text/javascript">
+        $(document).ready(function () {
+            let dateSelectedA = false;
+            let dateSelectedB = false;
+
+            $('.inputBar').on('click', function () {
+                $('.error').remove();
+
+                if ($(this).attr('name') === 'from') {
+                    $(this).datepicker({
+                        onSelect: function (dateText, objInst) {
+                            if (dateText !== "") {
+                                dateSelectedA = true;
+                            }
+                            if (dateSelectedA && dateSelectedB) {
+                                $('.submitBar').removeAttr('disabled');
+                            }
+
+                        }
+                    });
+
+                } else if ($(this).attr('name') === 'to') {
+                    $(this).datepicker({
+                        onSelect: function (dateText, objInst) {
+                            if (dateText !== "") {
+                                dateSelectedB = true;
+                            }
+                            if (dateSelectedA && dateSelectedB) {
+                                $('.submitBar').removeAttr('disabled');
+                            }
+                        }
+                    });
+                }
+            })
+
+            $('form').submit(function (e) {
+                let fromInput = $('input[name="from"]').val();
+                let toInput = $('input[name="to"]').val();
+                let name = $('input[name="name"]').val();
+
+                if (name == '') {
+                    $('#nameP').append("<p class='error'>Your name can't be blank!</p>")
+                } else {
+                    alert(`Thanks ${name}! Your trip starts on ${fromInput} and ends on ${toInput}.`);
+                }
+                return false;
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <p>From: <input class="inputBar dateBar" type="text" name="from"></p>
+        <p>To: <input class="inputBar dateBar" type="text" name="to"></p>
+        <p id="nameP">Name: <input class="inputBar" type="text" name="name"></p>
+        <input class="submitBar" type="submit" name='submit' value='Check Dates' disabled>
+    </form>
+</body>
+
+</html>
