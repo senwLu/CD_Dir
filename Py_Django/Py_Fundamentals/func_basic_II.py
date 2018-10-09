@@ -61,8 +61,10 @@ def valGreaterSec(arr):
 
 def lengthAndValue(size, value):
     arr = []
-    for i in range(0, size):
+    count = 0
+    while count < size:
         arr.append(value)
+        count += 1
     return arr
 
 
