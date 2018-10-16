@@ -5,11 +5,13 @@
 ._*
 
 # vscode generated files #
-######################
+##########################
 .vscode
 
 # Python #
+##########
 __pycache__
 
 # Folder Ignore #
+#################
 py3Env
