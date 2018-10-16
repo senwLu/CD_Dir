@@ -10,3 +10,6 @@
 
 # Python #
 __pycache__
+
+# Folder Ignore #
+py3Env
