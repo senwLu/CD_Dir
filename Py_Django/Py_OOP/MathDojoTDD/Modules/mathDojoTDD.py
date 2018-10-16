@@ -3,10 +3,10 @@ class MathDojo:
         self.sum = 0
 
     def add(self, num, *nums):
-        add = 0
+        add = num
         for i in range(len(nums)):
             add += nums[i]
-        self.sum += (num + add)
+        # return self.sum
         return self.sum
 
     def subtract(self, num, *nums):
@@ -18,8 +18,3 @@ class MathDojo:
 
     def result(self):
         return self.sum
-
-
-md = MathDojo()
-x = md.add(2).add(2, 5, 1).subtract(3, 2).result()
-print(x)
