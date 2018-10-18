@@ -1,0 +1,34 @@
+<head>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .center {
+            margin: 0px auto 0px auto;
+            width: 50%;
+            text-align: center;
+        }
+
+        .box {
+            display: inline-block;
+            border: 1px solid black;
+            background-color: LightBlue;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome!</h1>
+    <div class="center">
+        {% for i in range(count): %}
+        {% if color: %}
+        <div class="box" style="background-color: {{color}};"></div>
+        {% else %}
+        <div class="box"></div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</body>
