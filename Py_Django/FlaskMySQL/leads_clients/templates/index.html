@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Leads & Clients</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <style>
+        .table {
+            width: 50%;
+        }
+    </style>
+    <script>
+        var data_C = JSON.parse('{{ data_Table|tojson }}');
+        // console.log(data_C);
+    </script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/chart.js')}}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h4>List of all customers and # of leads</h4>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Number of Leads</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in data_Table %}
+                <tr>
+                    <th>{{customer.name}}</th>
+                    <td>{{customer.count}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    </div>
+
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+
+</html>
