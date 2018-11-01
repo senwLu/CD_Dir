@@ -13,6 +13,12 @@
             width: 60%;
             margin: 0px auto 0px auto;
         }
+
+        .errors {
+            color: red;
+            width: 60%;
+            margin: 25px auto 0px auto;
+        }
     </style>
 </head>
 
@@ -42,6 +48,15 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <div class="container errors">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
 </body>
 
 </html>

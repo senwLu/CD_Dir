@@ -1,9 +1,10 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, flash, session
 # import the function connectToMySQL from the file mysqlconnection.py
 from mysqlconnection import connectToMySQL
 from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
+app.secret_key = 'itsSecret'
 
 # we are creating an object called bcrypt,
 # which is made by invoking the function Bcrypt with our app as an argument
@@ -24,24 +25,33 @@ def index():
 
 @app.route('/create_user', methods=['POST'])
 def create():
-
-    # include some logic to validate user input before adding them to the database!
-    # create the hash
-    pw_hash = bcrypt.generate_password_hash(request.form['password'])
-    print(pw_hash)
     mysql = connectToMySQL("flaskApp")
 
-    # put the pw_hash in our data dictionary, NOT the password the user provided
-    data = {
-        'username': request.form['username'],
-        'password_hash': pw_hash
-    }
+    userCheck_query = 'SELECT * FROM users WHERE username like %(username)s;'
+    userCheck_data = {"username": request.form["username"]}
+    result = mysql.query_db(userCheck_query, userCheck_data)
 
-    query = "INSERT INTO users (username, password, created_at, updated_at) VALUES (%(username)s, %(password_hash)s, NOW(), NOW());"
+    if not result:
+        # include some logic to validate user input before adding them to the database!
+        # create the hash
+        pw_hash = bcrypt.generate_password_hash(request.form['password'])
 
-    mysql.query_db(query, data)
+        # put the pw_hash in our data dictionary, NOT the password the user provided
+        data = {
+            'username': request.form['username'],
+            'password_hash': pw_hash
+        }
 
-    return redirect('/')
+        mysql = connectToMySQL("flaskApp")
+
+        query = "INSERT INTO users (username, password, created_at, updated_at) VALUES (%(username)s, %(password_hash)s, NOW(), NOW());"
+
+        mysql.query_db(query, data)
+
+        return redirect('/')
+    else:
+        flash('Username in use, please choose another.')
+        return redirect('/')
 
 
 if __name__ == "__main__":
