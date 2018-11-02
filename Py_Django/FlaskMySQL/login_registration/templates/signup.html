@@ -3,7 +3,7 @@
 <div class="container center_LS">
     <h1>Sign Up</h1>
 
-    <form action="/login_user" method="POST">
+    <form action="/user_signup" method="POST">
         <!-- Username section -->
         <div class="form-group">
             <div class="input-group">
@@ -14,6 +14,13 @@
                 </div>
                 <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username">
             </div>
+            {% with errors = get_flashed_messages(category_filter=['username']) %}
+            {% if errors %}
+            {% for msg in errors %}
+            <p class="error">{{msg}}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
         </div>
 
         <!-- Email section -->
@@ -26,6 +33,13 @@
                 </div>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email">
             </div>
+            {% with errors = get_flashed_messages(category_filter=['email']) %}
+            {% if errors %}
+            {% for msg in errors %}
+            <p class="error">{{msg}}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
         </div>
         <!-- Password section -->
         <div class="form-group">
@@ -37,8 +51,14 @@
                 </div>
                 <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password">
             </div>
+            {% with errors = get_flashed_messages(category_filter=['password']) %}
+            {% if errors %}
+            {% for msg in errors %}
+            <p class="error">{{msg}}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
         </div>
-
         <!-- Submit & Back buttons -->
         <div>
             <button type="submit" class="btn btn-primary">Submit</button>

@@ -3,7 +3,7 @@
 <div class="container center_LS">
     <h1>Login</h1>
 
-    <form action="/login_user" method="POST">
+    <form action="/user_login" method="POST">
         <!-- Username section -->
         <div class="form-group">
             <div class="input-group">
@@ -26,6 +26,13 @@
                 </div>
                 <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password">
             </div>
+            {% with errors = get_flashed_messages(category_filter=['password']) %}
+            {% if errors %}
+            {% for msg in errors %}
+            <p class="error">{{msg}}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
         </div>
 
         <!-- Login & Sign up buttons -->
