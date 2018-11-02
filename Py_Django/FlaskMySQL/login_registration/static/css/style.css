@@ -1,0 +1,27 @@
+form {
+  width: 35%;
+  margin: 25px auto 0px auto;
+}
+
+form hr {
+  border-top: 1px solid black;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
+
+form hr:after {
+  background: #fff;
+  content: "or you can";
+  padding: 0 4px;
+  position: relative;
+  top: -13px;
+}
+
+form button {
+  width: 100%;
+}
+
+form a {
+  width: 100%;
+}
