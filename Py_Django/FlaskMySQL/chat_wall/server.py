@@ -16,7 +16,9 @@ def index():
     # if sessions does not have id, redirect to login page
     # only allow access to login and signup page if no id in session
     if session.get('user_id'):
-        return render_template('index.html')
+        mysql = connectToMySQL("chat_wallDB")
+        all_wall_chat = mysql.query_db("SELECT * FROM messages")
+        return render_template('chat_wall.html', wall_messages=all_wall_chat)
     else:
         return redirect('/login')
 
